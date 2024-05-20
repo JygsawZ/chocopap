@@ -13,6 +13,7 @@ const Product = ({id}) => {
         return <div>Produit non trouvé</div>;
     }
 
+
     return (
         <div>
             <div
