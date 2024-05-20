@@ -8,7 +8,7 @@ const Boutique = () => {
     return (
         <>
             <title>Boutique</title>
-            <div className="bg-White content flex flex-wrap justify-center">
+            <div className="content flex flex-wrap justify-center">
                 {products.map(product => (
                     <div className="w-1/2" key={product.id}>
                         <Product id={product.id}/>
