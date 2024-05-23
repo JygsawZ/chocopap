@@ -1,23 +1,16 @@
 import PropTypes from 'prop-types';
 import {ProductContext} from "./ProductContext.jsx";
 import {useContext} from "react";
-import Product from "./Product.jsx";
 
 const Filter = ({filters, onFilterChange}) => {
-    const {products, filterValues, resetFilters} = useContext(ProductContext);
+    const {filterValues, resetFilters} = useContext(ProductContext);
 
     const handleInputChange = (event) => {
         const {name, value} = event.target;
         onFilterChange(name, value);
     };
 
-    const filteredProducts = products.filter(product => {
-        return (
-            (filters.availability ? product.filter.availability === filters.availability : true) &&
-            (filters.price.from ? product.filter.price.from >= filters.price.from : true) &&
-            (filters.price.to ? product.filter.price.to <= filters.price.to : true)
-        );
-    });
+
 
     return (
         <div className="space-y-2">
@@ -27,7 +20,7 @@ const Filter = ({filters, onFilterChange}) => {
                 <summary
                     className="flex cursor-pointer items-center justify-between gap-2 bg-white p-4 text-gray-900 transition"
                 >
-                    <span className="text-sm font-medium"> Availability </span>
+                    <span className="text-sm font-medium"> Catégories </span>
 
                     <span className="transition group-open:-rotate-180">
                         <svg
@@ -53,15 +46,20 @@ const Filter = ({filters, onFilterChange}) => {
                     </header>
 
                     <ul className="space-y-1 border-t border-gray-200 p-4">
-                        {filterValues.availability.map(value => (
-                            <li key={value}>
+                        {filterValues.category && Array.from(new Set(filterValues.category)).map((value, index) => (
+                            <li key={index}>
                                 <label htmlFor={`Filter${value}`} className="inline-flex items-center gap-2">
                                     <input
                                         type="checkbox"
                                         id={`Filter${value}`}
                                         className="size-5 rounded border-gray-300"
-                                        checked={filters.availability === value}
-                                        onChange={handleInputChange} // Pass the event directly to handleInputChange
+                                        checked={filters.category.includes(value)}
+                                        onChange={() => handleInputChange({
+                                            target: {
+                                                name: 'category',
+                                                value
+                                            }
+                                        })}
                                     />
 
                                     <span className="text-sm font-medium text-gray-700"> {value} </span>
@@ -78,7 +76,7 @@ const Filter = ({filters, onFilterChange}) => {
                 <summary
                     className="flex cursor-pointer items-center justify-between gap-2 bg-white p-4 text-gray-900 transition"
                 >
-                    <span className="text-sm font-medium"> Price </span>
+                    <span className="text-sm font-medium"> Prix </span>
 
                     <span className="transition group-open:-rotate-180">
                         <svg
@@ -140,7 +138,7 @@ const Filter = ({filters, onFilterChange}) => {
 
 Filter.propTypes = {
     filters: PropTypes.shape({
-        availability: PropTypes.string,
+        category: PropTypes.array,
         price: PropTypes.shape({
             from: PropTypes.string,
             to: PropTypes.string,
@@ -148,5 +146,4 @@ Filter.propTypes = {
     }).isRequired,
     onFilterChange: PropTypes.func.isRequired,
 };
-
 export default Filter;

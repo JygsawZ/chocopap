@@ -7,13 +7,13 @@ export const ProductProvider = ({children}) => {
     const [products] = useState(productsData);
 
     const getUniqueFilterValues = (products) => {
-        const availabilityValues = [...new Set(products.map(product => product.filter.availability))];
+        const availabilityValues = [...new Set(products.map(product => product.filter.category))];
         const priceValues = {
             from: Math.min(...products.map(product => product.filter.price.from)),
             to: Math.max(...products.map(product => product.filter.price.to)),
         };
 
-        return { availability: availabilityValues, price: priceValues };
+        return { category: availabilityValues, price: priceValues };
     };
 
     const [filterValues, setFilterValues] = useState(getUniqueFilterValues(products));

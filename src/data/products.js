@@ -8,7 +8,7 @@ export default [
         description: 'Un délicieux chocolat.',
         ingredients: ['Cacao', 'Sucre', 'Lait'],
         filter: {
-            availability: 'inStock',
+            category: ['Chocolat au lait', 'Chocolat blanc','Chocolat noir','Noix/Noisette','Fruits','Caramel','Liqueur'],
             price: {
                 from: 0,
                 to: 5
@@ -23,7 +23,7 @@ export default [
         description: 'Un délicieux chocolat.',
         ingredients: ['Cacao', 'Sucre', 'Lait'],
         filter: {
-            availability: 'inStock',
+            category: ['Chocolat au lait', 'Chocolat blanc','Chocolat noir','Noix/Noisette','Fruits','Caramel','Liqueur'],
             price: {
                 from: 0,
                 to: 5
@@ -38,7 +38,7 @@ export default [
         description: 'Un délicieux chocolat.',
         ingredients: ['Cacao', 'Sucre', 'Lait'],
         filter: {
-            availability: 'inStock',
+            category: ['Chocolat au lait', 'Chocolat blanc','Chocolat noir','Noix/Noisette','Fruits','Caramel','Liqueur'],
             price: {
                 from: 0,
                 to: 5
@@ -53,7 +53,7 @@ export default [
         description: 'Un délicieux chocolat.',
         ingredients: ['Cacao', 'Sucre', 'Lait'],
         filter: {
-            availability: 'inStock',
+            category: ['Chocolat au lait', 'Chocolat blanc','Chocolat noir','Noix/Noisette','Fruits','Caramel','Liqueur'],
             price: {
                 from: 0,
                 to: 5
@@ -68,7 +68,7 @@ export default [
         description: 'Un délicieux chocolat.',
         ingredients: ['Cacao', 'Sucre', 'Lait'],
         filter: {
-            availability: 'inStock',
+            category: ['Chocolat au lait', 'Chocolat blanc','Chocolat noir','Noix/Noisette','Fruits','Caramel','Liqueur'],
             price: {
                 from: 0,
                 to: 5
@@ -83,7 +83,7 @@ export default [
         description: 'Un délicieux chocolat.',
         ingredients: ['Cacao', 'Sucre', 'Lait'],
         filter: {
-            availability: 'inStock',
+            category: ['Chocolat au lait', 'Chocolat blanc','Chocolat noir','Noix/Noisette','Fruits','Caramel','Liqueur'],
             price: {
                 from: 0,
                 to: 5
@@ -98,7 +98,7 @@ export default [
         description: 'Un délicieux chocolat.',
         ingredients: ['Cacao', 'Sucre', 'Lait'],
         filter: {
-            availability: 'inStock',
+            category: ['Chocolat au lait', 'Chocolat blanc','Chocolat noir','Noix/Noisette','Fruits','Caramel','Liqueur'],
             price: {
                 from: 0,
                 to: 5
@@ -113,7 +113,7 @@ export default [
         description: 'Un délicieux chocolat.',
         ingredients: ['Cacao', 'Sucre', 'Lait'],
         filter: {
-            availability: 'inStock',
+            category: ['Chocolat au lait', 'Chocolat blanc','Chocolat noir','Noix/Noisette','Fruits','Caramel','Liqueur'],
             price: {
                 from: 0,
                 to: 5
@@ -128,7 +128,7 @@ export default [
         description: 'Un délicieux chocolat.',
         ingredients: ['Cacao', 'Sucre', 'Lait'],
         filter: {
-            availability: 'inStock',
+            category: ['Chocolat au lait', 'Chocolat blanc','Chocolat noir','Noix/Noisette','Fruits','Caramel','Liqueur'],
             price: {
                 from: 0,
                 to: 5
@@ -143,7 +143,7 @@ export default [
         description: 'Un délicieux chocolat.',
         ingredients: ['Cacao', 'Sucre', 'Lait'],
         filter: {
-            availability: 'inStock',
+            category: ['Chocolat au lait', 'Chocolat blanc','Chocolat noir','Noix/Noisette','Fruits','Caramel','Liqueur'],
             price: {
                 from: 0,
                 to: 5

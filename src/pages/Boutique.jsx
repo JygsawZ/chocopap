@@ -6,16 +6,14 @@ import Filter from '../components/Filter.jsx'; // Importez le composant Filter
 const Boutique = () => {
     const {products, filterValues} = useContext(ProductContext);
 
-    // Ajoutez un état pour les filtres
     const [filters, setFilters] = useState({
-        availability: '',
+        category: [],
         price: {
             from: '',
             to: '',
         },
     });
 
-    // Ajoutez une fonction pour gérer le changement de filtre
     const handleFilterChange = (name, value) => {
         setFilters(prevFilters => ({
             ...prevFilters,
@@ -23,18 +21,46 @@ const Boutique = () => {
         }));
     };
 
+    const filterProducts = (products) => {
+        let filteredProducts = [...products];
+
+        // Filtre par catégorie
+        if (filters.category.length > 0) {
+            filteredProducts = filteredProducts.filter(product =>
+                filters.category.includes(product.category)
+            );
+        }
+
+        // Filtre par prix
+        if (filters.price.from) {
+            filteredProducts = filteredProducts.filter(product =>
+                product.price >= filters.price.from
+            );
+        }
+
+        if (filters.price.to) {
+            filteredProducts = filteredProducts.filter(product =>
+                product.price <= filters.price.to
+            );
+        }
+
+        return filteredProducts;
+    };
+
+    const displayedProducts = filterProducts(products);
+
     return (
         <>
             <title>Boutique</title>
             <div>
-                <div className="w-1/4 fixed">
+                <div>
                     <Filter filters={filters} onFilterChange={handleFilterChange} filterValues={filterValues} />
                 </div>
                 <div>
-                    <div className="w-3/4 ml-1/4">
-                        <div className="content flex flex-wrap justify-center">
-                            {products.map(product => (
-                                <div className="w-1/2" key={product.id}>
+                    <div>
+                        <div>
+                            {displayedProducts.map(product => (
+                                <div key={product.id}>
                                     <Product id={product.id}/>
                                 </div>
                             ))}
