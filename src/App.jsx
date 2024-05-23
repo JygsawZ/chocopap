@@ -3,7 +3,6 @@ import {CartProvider} from './components/CartContext';
 import {Routes, Route} from 'react-router-dom';
 import Home from './pages/Home';
 import Boutique from './pages/Boutique';
-import Panier from './pages/Panier';
 import {Navbar} from './components/Navbar.jsx';
 import Footer from './components/Footer';
 import {ProductDetail} from "./pages/ProductDetail.jsx";
@@ -19,7 +18,6 @@ export default function App() {
                         <Route path="/boutique" element={<Boutique/>}/>
                         <Route path="/produits" element={<Boutique/>}/>
                         <Route path="/produits/:id" element={<ProductDetail/>}/>
-                        <Route path="/panier" element={<Panier/>}/>
                     </Routes>
                     <Footer/>
                 </CartProvider>
