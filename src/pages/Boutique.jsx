@@ -31,6 +31,7 @@ const Boutique = () => {
             product.note >= noteFilter[0] && product.note <= noteFilter[1];
     });
 
+
     return (
         <>
             <title>Boutique</title>
