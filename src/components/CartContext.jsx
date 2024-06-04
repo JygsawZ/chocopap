@@ -25,8 +25,14 @@ export const CartProvider = ({ children }) => {
         setCart(prevCart => prevCart.filter(item => item.product.id !== productId));
     };
 
+    const calculateTotal = () => {
+        return cart.reduce((total, item) => total + (item.product.price * item.quantity), 0).toFixed(2);
+    };
+
+    const total = calculateTotal();
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, total }}>
             {children}
         </CartContext.Provider>
     );

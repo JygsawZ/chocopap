@@ -12,6 +12,7 @@ export function Navbar() {
     };
 
     const {cart} = useContext(CartContext);
+    const { total } = useContext(CartContext);
 
     return (
         <div className="flex justify-between items-center h-full mb-4 m-0 p-0 ">
@@ -34,14 +35,19 @@ export function Navbar() {
                 width='320px'
                 onRequestClose={() => setIsPaneOpen(false)}
             >
-                {cart.map(({product, quantity}) => (
-                    <div key={product.id}>
-                        <img src={product.image} alt={product.name}/>
-                        <h2>{product.name}</h2>
-                        <p>Quantité: {quantity}</p>
-                        <p>Prix: {product.price}€</p>
+                <div style={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
+                    <div>
+                        {cart.map(({product, quantity}) => (
+                            <div key={product.id}>
+                                <img src={product.image} alt={product.name}/>
+                                <h2>{product.name}</h2>
+                                <p>Quantité: {quantity}</p>
+                                <p>Prix: {product.price}€</p>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                    <div>Total du panier : {total}€</div>
+                </div>
             </SlidingPane>
         </div>
     )

@@ -3,8 +3,9 @@ import ProductCard from '../components/ProductCard';
 import products from '../data/products.json';
 
 const Boutique = () => {
+    const maxPrice = Math.max(...products.map(product => product.price));
     const [categoryFilter, setCategoryFilter] = useState({});
-    const [priceFilter, setPriceFilter] = useState([0, Infinity]);
+    const [priceFilter, setPriceFilter] = useState([0, maxPrice]);
     const [noteFilter, setNoteFilter] = useState([0, 5]);
 
     const handleCategoryChange = (event) => {
@@ -15,18 +16,34 @@ const Boutique = () => {
     };
 
     const handlePriceChange = (event) => {
-        const { min, max } = event.target.value;
-        setPriceFilter([min, max]);
+        const { name, value } = event.target;
+        setPriceFilter(prevState => {
+            if (name === 'min') {
+                return [Number(value) || 0, prevState[1]];
+            } else if (name === 'max') {
+                return [prevState[0], Number(value) || maxPrice];
+            } else {
+                return prevState;
+            }
+        });
     };
 
     const handleNoteChange = (event) => {
-        const { min, max } = event.target.value;
-        setNoteFilter([min, max]);
+        const {name, value} = event.target;
+        setNoteFilter(prevState => {
+            if (name === 'min') {
+                return [Number(value), prevState[1]];
+            } else if (name === 'max') {
+                return [prevState[0], Number(value)];
+            } else {
+                return prevState;
+            }
+        });
     };
 
     const displayedProducts = products.filter(product => {
-        const categoryKeys = Object.keys(categoryFilter);
-        return categoryKeys.every(key => product.category[key] === categoryFilter[key]) &&
+        const categoryKeys = Object.keys(categoryFilter).filter(key => categoryFilter[key]);
+        return categoryKeys.every(key => product.category[key]) &&
             product.price >= priceFilter[0] && product.price <= priceFilter[1] &&
             product.note >= noteFilter[0] && product.note <= noteFilter[1];
     });
@@ -37,7 +54,7 @@ const Boutique = () => {
             <title>Boutique</title>
             <div>
                 <div id="filter" className="border-2 border-b-black p-5 bg-White">
-                    <div id="category" className="text-xl">
+                    <div id="category" className="text-xl flex flex-col">
                         Catégories
                         <div>
                             <label>
@@ -75,11 +92,11 @@ const Boutique = () => {
                         <div>
                             <div>
                                 <span className="text-black">Prix min</span>
-                                <input type="number" id="prix-min"/>
+                                <input type="number" name="min" value={priceFilter[0]} onChange={handlePriceChange}/>
                             </div>
                             <div>
                                 <span className="text-black">Prix max</span>
-                                <input type="number" id="prix-max"/>
+                                <input type="number" name="max" value={priceFilter[1]} onChange={handlePriceChange}/>
                             </div>
                         </div>
                     </div>
@@ -88,7 +105,7 @@ const Boutique = () => {
                         <div>
                             <div>
                                 <span className="text-black">Note min</span>
-                                <select>
+                                <select name="min" onChange={handleNoteChange}>
                                     <option value={1}>1</option>
                                     <option value={2}>2</option>
                                     <option value={3}>3</option>
@@ -98,7 +115,7 @@ const Boutique = () => {
                             </div>
                             <div>
                                 <span className="text-black">Note max</span>
-                                <select>
+                                <select name="max" onChange={handleNoteChange}>
                                     <option value={1}>1</option>
                                     <option value={2}>2</option>
                                     <option value={3}>3</option>
