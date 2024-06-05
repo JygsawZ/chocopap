@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import ProductCard from '../components/ProductCard';
 import products from '../data/products.json';
 
@@ -12,11 +12,11 @@ const Boutique = () => {
         const value = event.target.checked;
         const name = event.target.value;
 
-        setCategoryFilter(prevState => ({ ...prevState, [name]: value }));
+        setCategoryFilter(prevState => ({...prevState, [name]: value}));
     };
 
     const handlePriceChange = (event) => {
-        const { name, value } = event.target;
+        const {name, value} = event.target;
         setPriceFilter(prevState => {
             if (name === 'min') {
                 return [Number(value) || 0, prevState[1]];
@@ -53,54 +53,102 @@ const Boutique = () => {
         <>
             <title>Boutique</title>
             <div>
-                <div id="filter" className="border-2 border-b-black p-5 bg-White">
-                    <div id="category" className="text-xl flex flex-col">
-                        Catégories
-                        <div>
-                            <label>
-                                <input type="checkbox" value="blanc" onChange={handleCategoryChange}/>
-                                Blanc
+                <div id="filter" className="flex flex-col border-2 border-b-black p-5 bg-White m-4">
+                    <div id="category" className="text-black text-xl my-2">
+                        <span className="flex items-center">
+                            <span className="pr-6">Catégories</span>
+                            <span className="h-px flex-1 bg-black"></span>
+                        </span>
+                        <div className="space-y-2">
+                            <label htmlFor="Option1" className="flex cursor-pointer items-start gap-4">
+                                <div className="flex items-center">
+                                    &#8203;
+                                    <input type="checkbox" value="blanc" className="size-4 rounded border-gray-300" id="Option1" onChange={handleCategoryChange}/>
+                                </div>
+                                <div>
+                                    <strong className="font-medium text-gray-900"> Blanc </strong>
+                                </div>
                             </label>
-                            <label>
-                                <input type="checkbox" value="lait" onChange={handleCategoryChange}/>
-                                Lait
+                            <label htmlFor="Option2" className="flex cursor-pointer items-start gap-4">
+                                <div className="flex items-center">
+                                    &#8203;
+                                    <input type="checkbox" value="lait" className="size-4 rounded border-gray-300" id="Option2" onChange={handleCategoryChange}/>
+                                </div>
+                                <div>
+                                    <strong className="font-medium text-gray-900"> Lait </strong>
+                                </div>
                             </label>
-                            <label>
-                                <input type="checkbox" value="noir" onChange={handleCategoryChange}/>
-                                Noir
+                            <label htmlFor="Option3" className="flex cursor-pointer items-start gap-4">
+                                <div className="flex items-center">
+                                    &#8203;
+                                    <input type="checkbox" value="noir" className="size-4 rounded border-gray-300" id="Option3" onChange={handleCategoryChange}/>
+                                </div>
+                                <div>
+                                    <strong className="font-medium text-gray-900"> Noir </strong>
+                                </div>
                             </label>
-                            <label>
-                                <input type="checkbox" value="caramel" onChange={handleCategoryChange}/>
-                                Caramel
+                            <label htmlFor="Option4" className="flex cursor-pointer items-start gap-4">
+                                <div className="flex items-center">
+                                    &#8203;
+                                    <input type="checkbox" value="caramel" className="size-4 rounded border-gray-300" id="Option4" onChange={handleCategoryChange}/>
+                                </div>
+                                <div>
+                                    <strong className="font-medium text-gray-900"> Caramel </strong>
+                                </div>
                             </label>
-                            <label>
-                                <input type="checkbox" value="noix" onChange={handleCategoryChange}/>
-                                Noix
+                            <label htmlFor="Option5" className="flex cursor-pointer items-start gap-4">
+                                <div className="flex items-center">
+                                    &#8203;
+                                    <input type="checkbox" value="noix" className="size-4 rounded border-gray-300" id="Option5" onChange={handleCategoryChange}/>
+                                </div>
+                                <div>
+                                    <strong className="font-medium text-gray-900"> Noix </strong>
+                                </div>
                             </label>
-                            <label>
-                                <input type="checkbox" value="fruit" onChange={handleCategoryChange}/>
-                                Fruit
+                            <label htmlFor="Option6" className="flex cursor-pointer items-start gap-4">
+                                <div className="flex items-center">
+                                    &#8203;
+                                    <input type="checkbox" value="fruit" className="size-4 rounded border-gray-300" id="Option6" onChange={handleCategoryChange}/>
+                                </div>
+                                <div>
+                                    <strong className="font-medium text-gray-900"> Fruits </strong>
+                                </div>
                             </label>
-                            <label>
-                                <input type="checkbox" value="liqueur" onChange={handleCategoryChange}/>
-                                Liqueur
+                            <label htmlFor="Option7" className="flex cursor-pointer items-start gap-4">
+                                <div className="flex items-center">
+                                    &#8203;
+                                    <input type="checkbox" value="liqueur" className="size-4 rounded border-gray-300" id="Option7" onChange={handleCategoryChange}/>
+                                </div>
+                                <div>
+                                    <strong className="font-medium text-gray-900"> Liqueur </strong>
+                                </div>
                             </label>
                         </div>
                     </div>
-                    <div className="text-black text-xl">Prix</div>
+                    <div className="text-black text-xl my-2">
+                        <span className="flex items-center">
+                            <span className="pr-6">Prix</span>
+                            <span className="h-px flex-1 bg-black"></span>
+                        </span>
+                    </div>
                     <div className="mt-2 mb-2">
                         <div>
                             <div>
-                                <span className="text-black">Prix min</span>
+                                <span className="text-black">Prix min </span>
                                 <input type="number" name="min" value={priceFilter[0]} onChange={handlePriceChange}/>
                             </div>
                             <div>
-                                <span className="text-black">Prix max</span>
+                                <span className="text-black">Prix max </span>
                                 <input type="number" name="max" value={priceFilter[1]} onChange={handlePriceChange}/>
                             </div>
                         </div>
                     </div>
-                    <div className="text-black text-xl">Notes</div>
+                    <div className="text-black text-xl my-2">
+                        <span className="flex items-center">
+                            <span className="pr-6">Notes</span>
+                            <span className="h-px flex-1 bg-black"></span>
+                        </span>
+                    </div>
                     <div className="mt-2 mb-2">
                         <div>
                             <div>
@@ -127,7 +175,7 @@ const Boutique = () => {
                     </div>
                 </div>
                 <div>
-                    <div>
+                    <div className="flex flex-col">
                         {displayedProducts.map(product => (
                             <ProductCard key={product.id} product={product}/>
                         ))}

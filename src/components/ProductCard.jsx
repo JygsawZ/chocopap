@@ -9,17 +9,21 @@ const ProductCard = ({product}) => {
     const { addToCart } = useContext(CartContext);
 
     return (
-        <div className="flex-col bg-white rounded-lg shadow-lg p-4 m-4">
+        <div className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 m-4">
             <Link to={`/product/${product.id}`}>
                 <img src={product.image} alt={product.title} className="rounded-lg" />
             </Link>
             <h2 className="text-2xl text-black">{product.title}</h2>
-            <p className="mt-1 ml-auto text-lg font-medium text-black">Note: {product.note}</p>
-            <p className="mt-1 ml-auto text-lg font-medium text-black">Prix {product.price}€</p>
-            <input type="number" value={quantity} onChange={e => setQuantity(Number(e.target.value))} />
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => addToCart(product, quantity)}>
-                Ajouter au panier
-            </button>
+            <p className="mt-1 text-lg font-medium text-black">Note :  {product.note}</p>
+            <p className="mt-1 text-lg font-medium text-black">Prix : {product.price}€</p>
+            <input className="m-auto" type="number" value={quantity} onChange={e => setQuantity(Number(e.target.value))} />
+            <form className="mt-4">
+                <button
+                    className="block w-full rounded bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105 "
+                    onClick={() => addToCart(product, quantity)}>
+                    Ajouter au panier
+                </button>
+            </form>
         </div>
     );
 };
