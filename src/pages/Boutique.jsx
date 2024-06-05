@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import ProductCard from '../components/ProductCard';
 import products from '../data/products.json';
+import { ProductsContext } from '../components/ProductsContext';
 
 const Boutique = () => {
     const maxPrice = Math.max(...products.map(product => product.price));
@@ -48,9 +49,8 @@ const Boutique = () => {
             product.note >= noteFilter[0] && product.note <= noteFilter[1];
     });
 
-
     return (
-        <>
+        <ProductsContext.Provider value={displayedProducts}>
             <title>Boutique</title>
             <div>
                 <div id="filter" className="flex flex-col border-2 border-b-black p-5 bg-White m-4">
@@ -134,11 +134,11 @@ const Boutique = () => {
                     <div className="mt-2 mb-2">
                         <div>
                             <div>
-                                <span className="text-black">Prix min </span>
+                                <span className="text-black">Prix min</span>
                                 <input type="number" name="min" value={priceFilter[0]} onChange={handlePriceChange}/>
                             </div>
                             <div>
-                                <span className="text-black">Prix max </span>
+                                <span className="text-black">Prix max</span>
                                 <input type="number" name="max" value={priceFilter[1]} onChange={handlePriceChange}/>
                             </div>
                         </div>
@@ -182,7 +182,7 @@ const Boutique = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </ProductsContext.Provider>
     );
 }
 export default Boutique;
