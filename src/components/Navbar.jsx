@@ -11,7 +11,7 @@ export function Navbar() {
         setIsPaneOpen(!isPaneOpen);
     };
 
-    const {cart} = useContext(CartContext);
+    const { cart } = useContext(CartContext);
     const { total } = useContext(CartContext);
 
     return (
@@ -39,8 +39,8 @@ export function Navbar() {
                     <div>
                         {cart.map(({product, quantity}) => (
                             <div key={product.id}>
-                                <img src={product.image} alt={product.name}/>
-                                <h2>{product.name}</h2>
+                                <img src={product.image} alt={product.title}/>
+                                <h2>{product.title}</h2>
                                 <p>Quantité: {quantity}</p>
                                 <p>Prix: {product.price}€</p>
                             </div>

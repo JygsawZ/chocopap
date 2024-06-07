@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import ProductCard from '../components/ProductCard';
 import products from '../data/products.json';
-import { ProductsContext } from '../components/ProductsContext';
+import {ProductsContext} from '../components/ProductsContext';
 
 const Boutique = () => {
     const maxPrice = Math.max(...products.map(product => product.price));
@@ -50,7 +50,7 @@ const Boutique = () => {
     });
 
     return (
-        <ProductsContext.Provider value={displayedProducts}>
+        < >
             <title>Boutique</title>
             <div>
                 <div id="filter" className="flex flex-col border-2 border-b-black p-5 bg-White m-4">
@@ -63,7 +63,8 @@ const Boutique = () => {
                             <label htmlFor="Option1" className="flex cursor-pointer items-start gap-4">
                                 <div className="flex items-center">
                                     &#8203;
-                                    <input type="checkbox" value="blanc" className="size-4 rounded border-gray-300" id="Option1" onChange={handleCategoryChange}/>
+                                    <input type="checkbox" value="blanc" className="size-4 rounded border-gray-300"
+                                           id="Option1" onChange={handleCategoryChange}/>
                                 </div>
                                 <div>
                                     <strong className="font-medium text-gray-900"> Blanc </strong>
@@ -72,7 +73,8 @@ const Boutique = () => {
                             <label htmlFor="Option2" className="flex cursor-pointer items-start gap-4">
                                 <div className="flex items-center">
                                     &#8203;
-                                    <input type="checkbox" value="lait" className="size-4 rounded border-gray-300" id="Option2" onChange={handleCategoryChange}/>
+                                    <input type="checkbox" value="lait" className="size-4 rounded border-gray-300"
+                                           id="Option2" onChange={handleCategoryChange}/>
                                 </div>
                                 <div>
                                     <strong className="font-medium text-gray-900"> Lait </strong>
@@ -81,7 +83,8 @@ const Boutique = () => {
                             <label htmlFor="Option3" className="flex cursor-pointer items-start gap-4">
                                 <div className="flex items-center">
                                     &#8203;
-                                    <input type="checkbox" value="noir" className="size-4 rounded border-gray-300" id="Option3" onChange={handleCategoryChange}/>
+                                    <input type="checkbox" value="noir" className="size-4 rounded border-gray-300"
+                                           id="Option3" onChange={handleCategoryChange}/>
                                 </div>
                                 <div>
                                     <strong className="font-medium text-gray-900"> Noir </strong>
@@ -90,7 +93,8 @@ const Boutique = () => {
                             <label htmlFor="Option4" className="flex cursor-pointer items-start gap-4">
                                 <div className="flex items-center">
                                     &#8203;
-                                    <input type="checkbox" value="caramel" className="size-4 rounded border-gray-300" id="Option4" onChange={handleCategoryChange}/>
+                                    <input type="checkbox" value="caramel" className="size-4 rounded border-gray-300"
+                                           id="Option4" onChange={handleCategoryChange}/>
                                 </div>
                                 <div>
                                     <strong className="font-medium text-gray-900"> Caramel </strong>
@@ -99,7 +103,8 @@ const Boutique = () => {
                             <label htmlFor="Option5" className="flex cursor-pointer items-start gap-4">
                                 <div className="flex items-center">
                                     &#8203;
-                                    <input type="checkbox" value="noix" className="size-4 rounded border-gray-300" id="Option5" onChange={handleCategoryChange}/>
+                                    <input type="checkbox" value="noix" className="size-4 rounded border-gray-300"
+                                           id="Option5" onChange={handleCategoryChange}/>
                                 </div>
                                 <div>
                                     <strong className="font-medium text-gray-900"> Noix </strong>
@@ -108,7 +113,8 @@ const Boutique = () => {
                             <label htmlFor="Option6" className="flex cursor-pointer items-start gap-4">
                                 <div className="flex items-center">
                                     &#8203;
-                                    <input type="checkbox" value="fruit" className="size-4 rounded border-gray-300" id="Option6" onChange={handleCategoryChange}/>
+                                    <input type="checkbox" value="fruit" className="size-4 rounded border-gray-300"
+                                           id="Option6" onChange={handleCategoryChange}/>
                                 </div>
                                 <div>
                                     <strong className="font-medium text-gray-900"> Fruits </strong>
@@ -117,7 +123,8 @@ const Boutique = () => {
                             <label htmlFor="Option7" className="flex cursor-pointer items-start gap-4">
                                 <div className="flex items-center">
                                     &#8203;
-                                    <input type="checkbox" value="liqueur" className="size-4 rounded border-gray-300" id="Option7" onChange={handleCategoryChange}/>
+                                    <input type="checkbox" value="liqueur" className="size-4 rounded border-gray-300"
+                                           id="Option7" onChange={handleCategoryChange}/>
                                 </div>
                                 <div>
                                     <strong className="font-medium text-gray-900"> Liqueur </strong>
@@ -174,15 +181,17 @@ const Boutique = () => {
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div className="flex flex-col">
-                        {displayedProducts.map(product => (
-                            <ProductCard key={product.id} product={product}/>
-                        ))}
+                <ProductsContext.Provider value={displayedProducts}>
+                    <div>
+                        <div className="flex flex-col">
+                            {displayedProducts.map(product => (
+                                <ProductCard key={product.id} product={product}/>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                </ProductsContext.Provider>
             </div>
-        </ProductsContext.Provider>
+        </>
     );
 }
 export default Boutique;
