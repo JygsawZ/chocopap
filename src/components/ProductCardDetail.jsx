@@ -9,6 +9,8 @@ const ProductCardDetail = () => {
     const {id} = useParams();
     const products = useContext(ProductsContext);
     const productDetail = products.find(p => p.id === id);
+    console.log(id);
+    console.log(productDetail);
 
     return (
         <div key={productDetail.id} className="flex flex-col items-center bg-white rounded-lg shadow-lg p-4 m-4">
